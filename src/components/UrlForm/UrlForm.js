@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { getUrls } from '../../apiCalls';
+import { addUrls } from '../../actions';
 
-class UrlForm extends Component {
+export class UrlForm extends Component {
   constructor(props) {
     super();
     this.props = props;
@@ -16,6 +19,7 @@ class UrlForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    this.props.addUrls({id: Date.now(), long_url: this.state.urlToShorten})
     this.clearInputs();
   }
 
@@ -37,7 +41,7 @@ class UrlForm extends Component {
         <input
           type='text'
           placeholder='URL to Shorten...'
-          name='title'
+          name='urlToShorten'
           value={this.state.urlToShorten}
           onChange={e => this.handleNameChange(e)}
         />
@@ -50,4 +54,8 @@ class UrlForm extends Component {
   }
 }
 
-export default UrlForm;
+export const mapDispatchToProps = dispatch => ({
+  addUrls: long_url => dispatch( addUrls(long_url) )
+})
+
+export default connect(null, mapDispatchToProps)(UrlForm);
