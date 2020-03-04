@@ -7,14 +7,11 @@ import { connect } from 'react-redux';
 
 const UrlContainer = props => {
   const urlEls = props.setUrls.map(url => {
-    console.log(url[0].long_url)
+    console.log(url.long_url)
     return (
       <div className="url">
-        <h1>{url[0].title}</h1>
-        <img src={url[0].long_url} />
-        <img src={url[0].short_url} />
-        <h1>{url.long_url}</h1>
-        <h1>{url.short_url}</h1>
+        <h1>{url.title}</h1>
+        <img src={url.long_url} />
       </div>
     )
   });

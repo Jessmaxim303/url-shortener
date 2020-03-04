@@ -15,8 +15,7 @@ export class App extends Component {
   componentDidMount() {
     getUrls()
       .then(data => this.props.setUrls(data.urls))
-      .then(info => console.log(info))
-      // .catch(err => console.error('Error fetching:', err));
+      .catch(err => console.error('Error fetching:', err));
   }
 
   render() {
