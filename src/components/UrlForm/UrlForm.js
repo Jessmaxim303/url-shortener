@@ -19,7 +19,7 @@ export class UrlForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.addUrls({id: Date.now(), long_url: this.state.urlToShorten, title: this.state.title})
+    this.props.addUrls({id: Date.now(), long_url: this.state.urlToShorten, short_url: "http://localhost:3001/useshorturl/2", title: this.state.title})
     this.clearInputs();
   }
 
